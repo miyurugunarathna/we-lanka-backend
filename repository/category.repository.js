@@ -7,8 +7,7 @@ export const saveCategory = (categoryData) => {
       .then((category) => {
         resolve(category);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
@@ -21,8 +20,7 @@ export const getAllCategories = () => {
       .then((data) => {
         resolve(data);
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
@@ -35,8 +33,7 @@ export const getCategory = (data) => {
       .then((category) => {
         resolve(category);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
@@ -49,8 +46,7 @@ export const getCategoryById = (id) => {
       .then((data) => {
         resolve(data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
@@ -59,11 +55,10 @@ export const getCategoryById = (id) => {
 export const RemoveCategory = (id) => {
   return new Promise((resolve, reject) => {
     Category.findByIdAndDelete(id)
-      .then((category) => {
+      .then(() => {
         resolve("Category has been removed successfully");
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
@@ -75,8 +70,7 @@ export const UpdateCategory = (id, data) => {
       .then((category) => {
         resolve(category);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });
