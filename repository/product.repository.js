@@ -41,12 +41,12 @@ export const getProduct = (data) => {
 
 export const getProductsByCategoryId = (categoryId) => {
   return new Promise((resolve, reject) => {
-    Product.find({ categoryId: categoryId })
+    Product.find({ categoryId })
       .select("-__v")
       .then((products) => {
         resolve(products);
       })
-      .catch((err) => {
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });

@@ -47,14 +47,14 @@ export const getInventory = (data) => {
 
 export const getProductsByLocationId = (locationId) => {
   return new Promise((resolve, reject) => {
-    Inventory.find({ locationId: locationId })
+    Inventory.find({ locationId })
       .select("-__v")
       .populate("productId", "_id name price description createdAt image")
       .then((inventorys) => {
         const products = inventorys.map((inventory) => inventory.productId);
         resolve(products);
       })
-      .catch((err) => {
+      .catch(() => {
         reject(new AppError("Internal server error.", 500));
       });
   });

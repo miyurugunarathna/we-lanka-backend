@@ -1,5 +1,4 @@
 import {
-  getInventory,
   saveInventory,
   getInventoryById,
   RemoveInventory,

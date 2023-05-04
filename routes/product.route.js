@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
   getAllProducts,
   getProductById,
@@ -10,9 +11,7 @@ import {
 import { authenticate } from "../middleware/auth.middleware.js";
 import { storage } from "../utils/fileStorage.js";
 
-import multer from "multer";
-
-var upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 const productRouter = express.Router();
 
