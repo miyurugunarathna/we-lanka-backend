@@ -60,6 +60,21 @@ export const getProductsByLocationId = (locationId) => {
   });
 };
 
+export const getLocationsByCategoryId = (categoryId) => {
+  return new Promise((resolve, reject) => {
+    Inventory.find({ categoryId })
+      .select("-__v")
+      .populate("locationId", "_id name")
+      .then((inventorys) => {
+        const locations = inventorys.map((inventory) => inventory.locationId);
+        resolve(locations);
+      })
+      .catch(() => {
+        reject(new AppError("Internal server error.", 500));
+      });
+  });
+};
+
 export const getInventoryById = (id) => {
   return new Promise((resolve, reject) => {
     Inventory.findById(id)
