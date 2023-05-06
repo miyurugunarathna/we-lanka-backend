@@ -4,6 +4,7 @@ import {
   updateLocation,
   getLocationUsingId,
   deleteLocation,
+  getLocationsUsingCategoryId,
 } from "../services/index.js";
 import Success from "../utils/success.js";
 
@@ -40,6 +41,15 @@ export const getLocationById = async (req, res) => {
   try {
     const location = await getLocationUsingId(req.params.id);
     res.json(Success(location));
+  } catch (err) {
+    res.status(err.status).json(err.message);
+  }
+};
+
+export const getLocationsByCategoryId = async (req, res) => {
+  try {
+    const locations = await getLocationsUsingCategoryId(req.params.id);
+    res.json(Success(locations));
   } catch (err) {
     res.status(err.status).json(err.message);
   }

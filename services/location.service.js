@@ -4,6 +4,7 @@ import {
   getAllLocations,
   getLocationById,
   RemoveLocation,
+  getLocationsByCategoryId,
 } from "../repository/index.js";
 import AppError from "../utils/appError.js";
 
@@ -58,6 +59,16 @@ export const getLocationUsingId = async (id) => {
     throw new AppError(error.message, error.status);
   }
 };
+
+export const getLocationsUsingCategoryId = async (categoryId) => {
+  try {
+    const locations = await getLocationsByCategoryId(categoryId);
+    return Promise.resolve(locations);
+  } catch (error) {
+    throw new AppError(error.message, error.status);
+  }
+};
+
 
 export const deleteLocation = async (id) => {
   try {
