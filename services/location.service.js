@@ -69,7 +69,6 @@ export const getLocationsUsingCategoryId = async (categoryId) => {
   }
 };
 
-
 export const deleteLocation = async (id) => {
   try {
     const existingLocation = await getLocationById(id);
