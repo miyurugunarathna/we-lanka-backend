@@ -60,14 +60,20 @@ export const getProductsByLocationId = (locationId) => {
   });
 };
 
-export const getLocationsByCategoryId = (categoryId) => {
+export const searchLocationsBasedOnCategoryIdAndUserInput = (
+  categoryId,
+  searchTerm,
+) => {
   return new Promise((resolve, reject) => {
     Inventory.find({ categoryId })
       .select("-__v")
       .populate("locationId", "_id name")
       .then((inventorys) => {
         const locations = inventorys.map((inventory) => inventory.locationId);
-        resolve(locations);
+        const filteredLocations = locations.filter((location) =>
+          location.name.toLowerCase().startsWith(searchTerm),
+        );
+        resolve(filteredLocations);
       })
       .catch(() => {
         reject(new AppError("Internal server error.", 500));

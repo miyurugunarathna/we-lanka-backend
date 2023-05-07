@@ -4,7 +4,7 @@ import {
   getAllLocations,
   getLocationById,
   RemoveLocation,
-  getLocationsByCategoryId,
+  searchLocationsBasedOnCategoryIdAndUserInput,
 } from "../repository/index.js";
 import AppError from "../utils/appError.js";
 
@@ -60,9 +60,12 @@ export const getLocationUsingId = async (id) => {
   }
 };
 
-export const getLocationsUsingCategoryId = async (categoryId) => {
+export const getLocationsUsingCategoryId = async (categoryId, searchTerm) => {
   try {
-    const locations = await getLocationsByCategoryId(categoryId);
+    const locations = await searchLocationsBasedOnCategoryIdAndUserInput(
+      categoryId,
+      searchTerm,
+    );
     return Promise.resolve(locations);
   } catch (error) {
     throw new AppError(error.message, error.status);
