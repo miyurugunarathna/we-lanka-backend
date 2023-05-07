@@ -1,4 +1,4 @@
-import { create, get, findOne, getAll, update } from "../repository/index.js";
+import { create, findOne, getAll, update } from "../repository/index.js";
 import AppError from "../utils/appError.js";
 
 export const modifyCartService = async (data, user) => {
@@ -17,7 +17,7 @@ export const modifyCartService = async (data, user) => {
 
 export const getCartService = async (user) => {
   try {
-    const cart = await get(user._id);
+    const cart = await findOne({ user: user._id });
     return Promise.resolve(cart);
   } catch (error) {
     throw new AppError(error.message, error.status);
