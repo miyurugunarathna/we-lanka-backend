@@ -55,7 +55,7 @@ export const getProductsByCategoryId = (categoryId) => {
 export const getProductById = (id) => {
   return new Promise((resolve, reject) => {
     Product.findById(id)
-      .select("_id name")
+      .select("-__v")
       .then((data) => {
         resolve(data);
       })

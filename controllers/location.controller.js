@@ -48,8 +48,11 @@ export const getLocationById = async (req, res) => {
 
 export const getLocationsByCategoryId = async (req, res) => {
   try {
-    const locations = await getLocationsUsingCategoryId(req.params.id);
-    res.json(Success(locations));
+    const filteredLocations = await getLocationsUsingCategoryId(
+      req.params.id,
+      req.query.searchTerm,
+    );
+    res.json(Success(filteredLocations));
   } catch (err) {
     res.status(err.status).json(err.message);
   }
