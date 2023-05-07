@@ -6,7 +6,12 @@ import { authenticate } from "../middleware/auth.middleware.js";
 
 const userRouter = express.Router();
 
-userRouter.post("/", celebrate({ body: ModifyCartBodySchema }), modifyCart);
+userRouter.post(
+  "/",
+  celebrate({ body: ModifyCartBodySchema }),
+  authenticate,
+  modifyCart,
+);
 userRouter.get("/me", authenticate, getCart);
 userRouter.get("/", authenticate, getCarts);
 
