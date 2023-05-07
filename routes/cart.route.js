@@ -7,7 +7,7 @@ import { authenticate } from "../middleware/auth.middleware.js";
 const userRouter = express.Router();
 
 userRouter.post("/", celebrate({ body: ModifyCartBodySchema }), modifyCart);
-userRouter.get("/me", getCart);
+userRouter.get("/me", authenticate, getCart);
 userRouter.get("/", authenticate, getCarts);
 
 export default userRouter;
