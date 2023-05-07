@@ -4,3 +4,4 @@ export * from "./location.controller.js";
 export * from "./product.controller.js";
 export * from "./inventory.controller.js";
 export * from "./cart.controller.js";
+export * from "./order.controller.js";

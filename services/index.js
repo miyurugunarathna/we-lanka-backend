@@ -4,3 +4,4 @@ export * from "./location.service.js";
 export * from "./product.service.js";
 export * from "./inventory.service.js";
 export * from "./cart.service.js";
+export * from "./order.service.js";
