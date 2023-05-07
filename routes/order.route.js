@@ -11,9 +11,9 @@ import { authenticate } from "../middleware/auth.middleware.js";
 const userRouter = express.Router();
 
 userRouter.post("/", authenticate, createOrder);
-userRouter.get("/:id", authenticate, getOrder);
 userRouter.get("/", authenticate, getOrders);
 userRouter.get("/me", authenticate, myOrders);
+userRouter.get("/:id", authenticate, getOrder);
 userRouter.put("/:id", authenticate, updateOrder);
 
 export default userRouter;
