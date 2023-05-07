@@ -16,7 +16,7 @@ export const saveProduct = (productData) => {
 export const getAllProducts = () => {
   return new Promise((resolve, reject) => {
     Product.find()
-      .select("_id name")
+      .select("-__v -createdAt -updatedAt")
       .then((data) => {
         resolve(data);
       })
@@ -29,7 +29,7 @@ export const getAllProducts = () => {
 export const getProduct = (data) => {
   return new Promise((resolve, reject) => {
     Product.findOne(data)
-      .select("_id name")
+      .select("-__v -createdAt -updatedAt")
       .then((product) => {
         resolve(product);
       })
